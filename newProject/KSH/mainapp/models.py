@@ -28,4 +28,16 @@ class Teachers(models.Model):
     email = models.EmailField()
     phone_number = models.CharField(max_length=255)
 
+class Groups(models.Model):
+    nameGroup = models.CharField(max_length=255)
+    day = models.DateTimeField()
+    max_count = models.IntegerField()
+    fact_count = models.IntegerField()
+    datestart = models.DateTimeField()
+
+class User(models.Model):
+    username = models.CharField(max_length= 255)
+    email = models.EmailField()
+    password = models.CharField(max_length=50)
+    admin_root = models.BooleanField(default=False)
 
