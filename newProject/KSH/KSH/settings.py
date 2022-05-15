@@ -128,10 +128,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 STATIC_ROOT = BASE_DIR / 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "assets"),
-    os.path.join(BASE_DIR, "frontend/dist"),
-]
 
 WEBPACK_LOADER = {
     'DEFAULT': {
