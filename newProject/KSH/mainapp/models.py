@@ -6,15 +6,16 @@ from bs4 import BeautifulSoup
 import requests
 # Create your models here.
 from django.db import models
+
 class Note(models.Model):
     title = models.CharField(max_length=255)
     url = models.URLField(max_length=255,default="")
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    def ParsingContester(self,url):
+
+    def ParsingContester(self):
         if Note.url != None:
-            url = str(input("Вставьте ссылку на ресурс vtcloud: "))
-            responce = requests.get(url)
+            responce = requests.get(Note.url)
             soup = BeautifulSoup(responce.text,'lxml')
             quotes = soup.find_all('option')
             for quote in quotes:

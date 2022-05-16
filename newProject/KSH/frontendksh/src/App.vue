@@ -1,27 +1,14 @@
 <template lang="pug">
-#app
-    section.container.grid-960
-      .columns
-        .column.col-2
-        .column.col-8.col-md-12
-          header.text-center
-            h2 Create note
-          create-note
-          header.text-center
-            h2 List of notes
-          note-list
-        .column.col-2
+MainNavbar
+<router-view></router-view>
 </template>
 
 <script>
-import CreateNote from "./components/CreateNote";
-import NoteList from "./components/NoteList";
-
+import MainNavbar from "./components/MainNavbar.vue";
 export default {
   name: "app",
   components: {
-    "create-note": CreateNote,
-    "note-list": NoteList,
+    MainNavbar: MainNavbar,
   },
 };
 </script>
