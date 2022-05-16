@@ -4,7 +4,7 @@
         .card-header
             button.btn.btn-clear.float-right(@click="deleteNote(note)")
             .card-title {{ note.title }}
-            .card-subtitle {{ note.created_at }}
+            .card-subtitle {{ note.url }}
         .card-body {{ note.body }}
 </template>
 

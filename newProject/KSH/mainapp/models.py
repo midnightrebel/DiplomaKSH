@@ -2,17 +2,24 @@ from django.db import models
 from django.shortcuts import render
 from django.views import View
 import json
+from bs4 import BeautifulSoup
+import requests
 # Create your models here.
-import parsing
 from django.db import models
 class Note(models.Model):
     title = models.CharField(max_length=255)
     url = models.URLField(max_length=255,default="")
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    def ParsingContester(self,request):
+    def ParsingContester(self,url):
         if Note.url != None:
-            parsing.parsingVt(Note.url)
+            url = str(input("Вставьте ссылку на ресурс vtcloud: "))
+            responce = requests.get(url)
+            soup = BeautifulSoup(responce.text,'lxml')
+            quotes = soup.find_all('option')
+            for quote in quotes:
+                if(quote.text.__contains__("КШ")):
+                    print(quote.text[9:])
 
 
 class Students(models.Model):

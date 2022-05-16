@@ -7,6 +7,11 @@ form.form-horizontal(@submit="submitForm")
                 input.form-input(type="text" v-model="title" placeholder="Type note title...")
         .form-group
             .col-3
+                label.form-label URL
+            .col-9
+                input.form-input(type="text" v-model="url" placeholder="Paste a link...")
+        .form-group
+            .col-3
                 label.form-label Body
             .col-9
                 textarea.form-input(v-model="body" rows=8 placeholder="Type your note...")
@@ -23,6 +28,7 @@ export default {
     return {
       title: "",
       body: "",
+      url: "",
     };
   },
   methods: {
@@ -33,10 +39,10 @@ export default {
       // нам нужно теперь очистить поля title и body
       this.title = "";
       this.body = "";
-
-      // preventDefault нужно для того, чтобы страница
-      // не перезагружалась после нажатия кнопки submit
-      event.preventDefault();
+      (this.url = ""),
+        // preventDefault нужно для того, чтобы страница
+        // не перезагружалась после нажатия кнопки submit
+        event.preventDefault();
     },
     createNote() {
       // Вызываем действие `createNote` из хранилища, которое
@@ -44,6 +50,7 @@ export default {
       this.$store.dispatch("createNote", {
         title: this.title,
         body: this.body,
+        url: this.url,
       });
     },
   },
