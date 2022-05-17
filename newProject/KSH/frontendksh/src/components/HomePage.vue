@@ -80,7 +80,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Reiciendis aliquid atque, nulla.
                   </p>
-                  <a class="btn btn-primary" href="#!">Read more →</a>
+                  <a class="btn btn-primary" href="#!">Подробнее</a>
                 </div>
               </div>
             </div>
