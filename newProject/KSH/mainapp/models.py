@@ -47,5 +47,5 @@ class User(models.Model):
     username = models.CharField(max_length= 255)
     email = models.EmailField()
     password = models.CharField(max_length=50)
-    admin_root = models.BooleanField(default=False)
+    admin_root = models.BooleanField(default=True)
 

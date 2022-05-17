@@ -10,7 +10,7 @@ export default createRouter({
       name: "NotFound",
       component: NotFound,
     },
-    { path: "/home", component: HomePage },
+    { path: "/", component: HomePage },
     { path: "/signin", component: AutorizePage },
   ],
 });

@@ -9,6 +9,7 @@
           name="userName"
           id="userName"
           placeholder="name@example.com"
+          v-model="autorize_form"
         />
       </div>
       <div class="form-field d-flex align-items-center">
@@ -17,6 +18,7 @@
           type="password"
           name="password"
           id="pwd"
+          v-model="password"
           placeholder="Password"
         />
       </div>
@@ -24,10 +26,22 @@
     </form>
     <div class="text-center fs-6">
       <a href="#">Забыли пароль?</a> <br />
-      <a href="#">Войти</a>
+      <a @onclick="Login" href="#">Войти</a>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: "autorize_form",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+};
+</script>
 
 <style>
 /* Reseting */
