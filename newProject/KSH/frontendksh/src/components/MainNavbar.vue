@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Генерация групп КШ</a>
+      <a class="navbar-brand">Генерация групп КШ</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -57,17 +57,17 @@
               placeholder="Search"
               aria-label="Search"
             /> -->
-        <button
+        <a
           class="btn btn-outline-success me-2"
-          type="submit"
-          href="#"
+          href="#/signin"
+          role="button"
           position="relative"
         >
           Войти
-        </button>
-        <button class="btn btn-outline-success" type="submit" href="#">
+        </a>
+        <a class="btn btn-outline-success" type="submit" href="#">
           Зарегистрироваться
-        </button>
+        </a>
         <!-- </form> -->
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import HomePage from "./components/HomePage";
 import NotFound from "./components/404Page";
+import AutorizePage from "./components/AutorizePage";
 export default createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -10,5 +11,6 @@ export default createRouter({
       component: NotFound,
     },
     { path: "/home", component: HomePage },
+    { path: "/signin", component: AutorizePage },
   ],
 });
