@@ -6,7 +6,15 @@ from bs4 import BeautifulSoup
 import requests
 # Create your models here.
 from django.db import models
-
+DAYS_OF_WEEK = (
+    (0, 'Monday'),
+    (1, 'Tuesday'),
+    (2, 'Wednesday'),
+    (3, 'Thursday'),
+    (4, 'Friday'),
+    (5, 'Saturday'),
+    (6, 'Sunday'),
+)
 class Note(models.Model):
     title = models.CharField(max_length=255)
     url = models.URLField(max_length=255,default="")
@@ -28,6 +36,8 @@ class Students(models.Model):
     class_student = models.IntegerField()
     granted = models.BooleanField(default=False)
     school = models.CharField(max_length=255)
+    subject = models.CharField(max_length=255,default = '')
+    days = models.CharField(max_length=1, choices=DAYS_OF_WEEK,default = '0')
     email = models.EmailField()
     phone_number = models.CharField(max_length=255)
 
