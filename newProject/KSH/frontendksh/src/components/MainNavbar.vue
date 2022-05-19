@@ -42,7 +42,9 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Contester</a></li>
               <li><a class="dropdown-item" href="#">Гугл-форма</a></li>
-              <li><a class="dropdown-item" href="#">Excel</a></li>
+              <li>
+                <a class="dropdown-item" href="#/generate/excel">Excel</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
