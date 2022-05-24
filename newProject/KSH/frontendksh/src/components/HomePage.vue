@@ -31,14 +31,11 @@
               src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
               alt="..."
           /></a>
-          <div class="card-body">
+          <div class="card-body" v-for="note in mainapp" :key="note.title">
             <div class="small text-muted">January 1, 2022</div>
-            <h2 class="card-title">Featured Post Title</h2>
+            <h2 class="card-title">Ttile</h2>
             <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a
-              laboriosam. Dicta expedita corporis animi vero voluptate
-              voluptatibus possimus, veniam magni quis!
+              {{ note.body }}
             </p>
             <a class="btn btn-primary" href="#!">Read more →</a>
           </div>
@@ -187,5 +184,18 @@
   </eslint-disable>
 </template>
 <script>
-export default {};
+export default {
+  name: " HomePage",
+  props: {
+    notes: {
+      type: Array,
+      required: true,
+    },
+  },
+  computed: {
+    publishedPosts() {
+      return this.posts.filter((note) => note.title);
+    },
+  },
+};
 </script>
