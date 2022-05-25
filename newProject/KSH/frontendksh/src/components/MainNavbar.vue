@@ -21,7 +21,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
+            <a class="nav-link active" aria-current="page" href="#/groups"
               >Список групп</a
             >
           </li>
@@ -40,7 +40,11 @@
               Генерация группы
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Contester</a></li>
+              <li>
+                <a class="dropdown-item" href="#/generate/contester/"
+                  >Contester</a
+                >
+              </li>
               <li><a class="dropdown-item" href="#">Гугл-форма</a></li>
               <li>
                 <a class="dropdown-item" href="#/generate/excel">Excel</a>

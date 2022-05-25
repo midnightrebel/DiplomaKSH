@@ -23,6 +23,7 @@ from mainapp import urls
 urlpatterns = [
     path('', include('mainapp.urls')),
     path('admin/', admin.site.urls),
+    path('dj-rest-auth/', include('dj-rest-auth.urls')),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,6 +1,10 @@
 <template>
   <div class="card" style="width: 18rem">
-    <img class="card-img-top" src="..." alt="Card image cap" />
+    <img
+      class="card-img-top"
+      src="https://picsum.photos/200"
+      alt="Card image cap"
+    />
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">
@@ -10,5 +14,3 @@
     </div>
   </div>
 </template>
-
-<script></script>

@@ -56,6 +56,7 @@ progress {
 
 <template>
   <div id="file-drag-drop">
+    <hr />
     <form id="drop-form" @drop="handleFileDrop($event)">
       <span class="drop-files">Drop the files here!</span>
     </form>
