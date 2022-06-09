@@ -76,7 +76,11 @@
         >
           Войти
         </a>
-        <a class="btn btn-outline-success" type="submit" href="#">
+        <a
+          class="btn btn-outline-success"
+          type="submit"
+          href="/api/users/register"
+        >
           Зарегистрироваться
         </a>
         <!-- </form> -->

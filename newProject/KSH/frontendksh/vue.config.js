@@ -12,6 +12,7 @@ module.exports = defineConfig({
     proxy: {
       "^/api": {
         target: "http://localhost:8000",
+        headers: { "Access-Control-Allow-Origin": "*" },
       },
     },
   },
