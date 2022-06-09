@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework_simplejwt',
     'dj_rest_auth',
-    'import_export',
     'corsheaders',
     'users',
     'webpack_loader',
@@ -130,24 +129,16 @@ CORS_ORIGIN_WHITELIST = ["http://localhost:8080"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATIC_ROOT = 'static/'
+STATIC_ROOT = ''
 STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
+STATICFILES_DIRS = ( os.path.join('static'), )
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'dist/',
         'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json')
-    }
-}
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
 }
