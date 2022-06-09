@@ -1,8 +1,8 @@
 const path = require("path");
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
-   // Paths
-  // Рабочая директория сборки 
+  // Paths
+  // Рабочая директория сборки
   // Я обычно указываю директорию приложения django, которое отвеает за фронт
   publicPath: process.env.VUE_APP_STATIC_URL,
   outputDir: path.resolve(__dirname, "../static"),
@@ -12,6 +12,7 @@ module.exports = defineConfig({
     proxy: {
       "^/api": {
         target: "http://localhost:8000",
+        headers: { "Access-Control-Allow-Origin": "*" },
       },
     },
   },

@@ -1,127 +1,128 @@
 <template>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Домашняя страница</title>
-  </head>
-  <!-- Page header with logo and tagline-->
-  <header class="py-5 bg-light border-bottom mb-4">
-    <div class="container">
-      <div class="text-center my-5">
-        <h1 class="fw-bolder">Добро пожаловать!</h1>
-        <p class="lead mb-0">Ресурс посвящён генерации групп в КШ ФИСТ.</p>
+  <div>
+    <head>
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <title>Домашняя страница</title>
+    </head>
+    <!-- Page header with logo and tagline-->
+    <header class="py-5 bg-light border-bottom mb-4">
+      <div class="container">
+        <div class="text-center my-5">
+          <h1 class="fw-bolder">Добро пожаловать!</h1>
+          <p class="lead mb-0">Ресурс посвящён генерации групп в КШ ФИСТ.</p>
+        </div>
       </div>
-    </div>
-  </header>
-  <!-- Page content-->
-  <div class="container">
-    <div class="row">
-      <!-- Blog entries-->
-      <div class="col-lg-8">
-        <!-- Featured blog post-->
-        <div class="card mb-4">
-          <a href="#!"
-            ><img
-              class="card-img-top"
-              src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-              alt="..."
-          /></a>
-          <div class="card-body" v-for="note in mainapp" :key="note.title">
-            <div class="small text-muted">January 1, 2022</div>
-            <h2 class="card-title">Ttile</h2>
-            <p class="card-text">
-              {{ note.body }}
-            </p>
-            <a class="btn btn-primary" href="#!">Read more →</a>
-          </div>
-        </div>
-        <!-- Nested row for non-featured blog posts-->
-        <div class="row">
-          <div class="col-lg-6">
-            <!-- Blog post-->
-            <div class="card mb-4">
-              <a href="#!"
-                ><img
-                  class="card-img-top"
-                  src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                  alt="..."
-              /></a>
-              <div class="card-body">
-                <div class="small text-muted">January 1, 2022</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reiciendis aliquid atque, nulla.
-                </p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
-              </div>
-            </div>
-            <!-- Blog post-->
-            <div class="card mb-4">
-              <a href="#!"
-                ><img
-                  class="card-img-top"
-                  src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                  alt="..."
-              /></a>
-              <div class="card-body">
-                <div class="small text-muted">January 1, 2022</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reiciendis aliquid atque, nulla.
-                </p>
-                <a class="btn btn-primary" href="#!">Подробнее</a>
-              </div>
+    </header>
+    <!-- Page content-->
+    <div class="container">
+      <div class="row">
+        <!-- Blog entries-->
+        <div class="col-lg-8">
+          <!-- Featured blog post-->
+          <div class="card mb-4">
+            <a href="#!"
+              ><img
+                class="card-img-top"
+                src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
+                alt="..."
+            /></a>
+            <div class="card-body" v-for="note in mainapp" :key="note.title">
+              <div class="small text-muted">January 1, 2022</div>
+              <h2 class="card-title">Ttile</h2>
+              <p class="card-text">
+                {{ note.body }}
+              </p>
+              <a class="btn btn-primary" href="#!">Read more →</a>
             </div>
           </div>
-          <div class="col-lg-6">
-            <!-- Blog post-->
-            <div class="card mb-4">
-              <a href="#!"
-                ><img
-                  class="card-img-top"
-                  src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                  alt="..."
-              /></a>
-              <div class="card-body">
-                <div class="small text-muted">January 1, 2022</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reiciendis aliquid atque, nulla.
-                </p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
+          <!-- Nested row for non-featured blog posts-->
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- Blog post-->
+              <div class="card mb-4">
+                <a href="#!"
+                  ><img
+                    class="card-img-top"
+                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                    alt="..."
+                /></a>
+                <div class="card-body">
+                  <div class="small text-muted">January 1, 2022</div>
+                  <h2 class="card-title h4">Post Title</h2>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Reiciendis aliquid atque, nulla.
+                  </p>
+                  <a class="btn btn-primary" href="#!">Read more →</a>
+                </div>
+              </div>
+              <!-- Blog post-->
+              <div class="card mb-4">
+                <a href="#!"
+                  ><img
+                    class="card-img-top"
+                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                    alt="..."
+                /></a>
+                <div class="card-body">
+                  <div class="small text-muted">January 1, 2022</div>
+                  <h2 class="card-title h4">Post Title</h2>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Reiciendis aliquid atque, nulla.
+                  </p>
+                  <a class="btn btn-primary" href="#!">Подробнее</a>
+                </div>
               </div>
             </div>
-            <!-- Blog post-->
-            <div class="card mb-4">
-              <a href="#!"
-                ><img
-                  class="card-img-top"
-                  src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                  alt="..."
-              /></a>
-              <div class="card-body">
-                <div class="small text-muted">January 1, 2022</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a
-                  laboriosam.
-                </p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
+            <div class="col-lg-6">
+              <!-- Blog post-->
+              <div class="card mb-4">
+                <a href="#!"
+                  ><img
+                    class="card-img-top"
+                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                    alt="..."
+                /></a>
+                <div class="card-body">
+                  <div class="small text-muted">January 1, 2022</div>
+                  <h2 class="card-title h4">Post Title</h2>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Reiciendis aliquid atque, nulla.
+                  </p>
+                  <a class="btn btn-primary" href="#!">Read more →</a>
+                </div>
+              </div>
+              <!-- Blog post-->
+              <div class="card mb-4">
+                <a href="#!"
+                  ><img
+                    class="card-img-top"
+                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                    alt="..."
+                /></a>
+                <div class="card-body">
+                  <div class="small text-muted">January 1, 2022</div>
+                  <h2 class="card-title h4">Post Title</h2>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a
+                    laboriosam.
+                  </p>
+                  <a class="btn btn-primary" href="#!">Read more →</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Pagination-->
-        <!-- <nav aria-label="Pagination">
+          <!-- Pagination-->
+          <!-- <nav aria-label="Pagination">
             <hr class="my-0" />
             <ul class="pagination justify-content-center my-4">
               <li class="page-item disabled">
@@ -144,9 +145,9 @@
             </ul>
           </nav>
         </div> -->
-        <!-- Side widgets-->
-        <!-- Search widget-->
-        <!-- <div class="col-lg-4">    
+          <!-- Side widgets-->
+          <!-- Search widget-->
+          <!-- <div class="col-lg-4">    
             <div class="card mb-4">
             <div class="card-header">Search</div>
             <div class="card-body">
@@ -169,19 +170,10 @@
             </div>
           </div>
         </div> -->
+        </div>
       </div>
     </div>
   </div>
-  <!-- Footer-->
-  <eslint-disable>
-    <div class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">
-          Copyright &copy; Your Website 2022
-        </p>
-      </div>
-    </div>
-  </eslint-disable>
 </template>
 <script>
 export default {

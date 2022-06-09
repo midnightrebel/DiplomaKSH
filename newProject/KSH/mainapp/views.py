@@ -4,18 +4,15 @@ import json
 # Create your views here.
 from rest_framework import viewsets
 from django.views.generic import TemplateView
-from .models import Note
-from .serializers import NoteSerializer
 
-class NoteViewSet(viewsets.ModelViewSet):
-    queryset = Note.objects.all().order_by('-created_at')
-    serializer_class = NoteSerializer
+
 
 
 
 
 class Index(TemplateView):
     template_name = "index.html"
+
 
 class FrontendTemplateView(View):
     def post(self, request):

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "praxis-surface-352813",
+  "private_key_id": "c75cb27ba076cb4b032c851965f796b260f00bf4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDRv3lyMeiImMEn\n7ARRDf2D1Cj/Mt15Ukf9bsU2uISFsTkUEm+dI6tHk6xcH4P1i2tV+metD9aMzGZL\nWdAA5D7BMBhS/eUEulrAVKBD+1FCEO2E0WDZuqbZC09Gfxs8R2zv3BHsObadiZ/h\ngQ4rJcCZlJAIVOVjhAMpXTFnXBqEB8HNPp6BQul5G3eQEwVvdkY5VbdpOsZHpMBg\nh8jjPTtMJyWG6edXVvR9bREu2D+7rbzYdGhXusYVsPSKVR8rNbg/hJVqqc5p2vcU\nOQk28FA23IJPsVRZDXsTjyU589SKC1z4JFJQbNzsKDRcvP7trLoqTu32wG58mL3x\nx9isF+efAgMBAAECggEAFnUi4rg3RpDcdZLOr4MI9tl7fj+K+Rd3P8phcUd2YP4l\nt2F18+RCzYohNUfmkB7aYj1KZnxAo5irBzxZig7mLTciE5i9sbDmUJt/AWhiPemk\nFMl6TjWu8aRFW632U5DuOAxfGuTfCaUXqkRwKOyE36zJcyrr2Kjk0cP5qzBwYlxk\nowRk9GuCHaGRD+pRjYetCpekjZDeswL676mN0Z+3n/u0QLP5VvZPB/WNzyfeOoTg\nvtrQVwNHTTPdoLUwoSs+Bve6nTpyJEjzDEH0uk+7ZATWLoDpbWdVDbzOGeir3Y6W\nmzAU6fwbP3C4CoEXXX32CJmxBcKYd/xQ5gNFI321iQKBgQDp/9zcbPs6L3F05Fw/\nA2yIW1BYIAUarQ3zJS7TLiQQ6ce0J0dbApbwoJPoJolM5wp0XfFYKzx2T2iW4MPK\nwbvKK6MSce/st/pVKzyaZOM4wvK5+ag9bTmTiD7UpwptlLCOtl5enbK0kti49cs7\ntrbEKcWa5h3JDw8at4AIYDQU0wKBgQDld+bGiXIq7EeXSMI2r2naYxXbbe6zmRGI\nJXn1jhQfMelgNjf68waACluFmZhD2Eg/sioTD/D3NpIalgUBJSYMfyY5Wc4BszlY\nt86cag7tNvqFV1hxNGafKONiBen1KP9yXWbyazhX3bU3D8g2oAT5AnrkGq6arkQb\nBngAf7zShQKBgQDfyMacN817s+u5cruVt9yP+2Q3I0g+Xso8go7pf/MWCb3nWLkx\nHKTls2xAVLpyRXMGHuG1BIRqUT8hLAuTWPwTOPBXr4dYyAoscZEfxuRXYHlpyo1P\nUaoCogYUsTuT2OORWG+f5QkHEHkbSlX24aKgr6I/pVtO8YvsbRmQ6RBl6QKBgQDT\nwGKQoXNeUq352CWIizTWV4tq8zZMO5tnFJZH2DWPV+Kxazcbd7pu25/7WHKfYO3D\nAak78AEAUDZhHEE//kTvUUI3uDyXawknam7Z/jEKDCsAc0rlJGLyyquR4D02g/++\nTJzcZb8Xrjs0tXafmekc1IINDuZDTT8B5WVFqJrZdQKBgQC3dBA0nPbjJ4LP2w5R\nilp2fEgqIeaGio2OKIIEw1dBtgKP3hLJLF+5gkP3Ume8fJM3QYVyStGouwCETQ14\njBgULx4BrKFNH77s3kSvzYI7xvDPvvnX5wbOR2ySfoI7gsOnT2uKre+h4ZBQ6uzk\nnu8ZU2vNJ1+iTfwbuswuASjmnw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "kshfist@praxis-surface-352813.iam.gserviceaccount.com",
+  "client_id": "110035692412500098088",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kshfist%40praxis-surface-352813.iam.gserviceaccount.com"
+}

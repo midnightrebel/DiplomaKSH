@@ -1,9 +1,8 @@
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from .views import NoteViewSet,Index
+from .views import Index
 from rest_framework import routers
 router = routers.DefaultRouter()
-router.register('view',NoteViewSet)
 urlpatterns = [
     path('',Index.as_view(),name = 'home')
 ]

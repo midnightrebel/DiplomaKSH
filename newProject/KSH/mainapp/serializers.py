@@ -1,12 +1,28 @@
 from rest_framework import serializers
-from .models import Note,User
-class NoteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Note
-        fields = ('id', 'title','url', 'body', 'created_at')
+from .models import Students,Groups
 
-class UserSerializer(serializers.ModelSerializer):
+
+class GroupListSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = User
-        fields = ('id', 'username', 'email', 'password','admin_root')
+        model = Groups
+        fields = ['nameGroup', 'fact_count','day','aud']
+
+class GroupCreateSerialzer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = ['nameGroup', 'fact_count', 'day', 'aud']
+
+
+class StudentsCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ['fio']
+
+class StudentsCreateSerializer(serializers.ModelSerializer):
+    def create(self,validated_data):
+        return Students.objects.create(**validated_data)
+    class Meta:
+        model = Students
+        fields = ['fio','group','subject','days']
+
+
