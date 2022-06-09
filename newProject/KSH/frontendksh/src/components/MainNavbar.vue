@@ -51,15 +51,18 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
-          </li>
+          <td>
+            <li class="nav-item">
+              <a
+                class="nav-link disabled"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                v-bind:user="user"
+                >Добро пожаловать,{{ user.full_name }}</a
+              >
+            </li>
+          </td>
         </ul>
         <!-- <form class="d-flex">
             <input
@@ -88,3 +91,31 @@
     </div>
   </nav>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  name: "MainNavbar",
+  data() {
+    return {
+      user: "",
+    };
+  },
+  mounted() {
+    this.getLatestProducts();
+  },
+  methods: {
+    async getLatestProducts() {
+      await axios
+        .get("/api/users/users/1/")
+        .then((response) => {
+          this.user = response.data;
+          console.log(this.user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
+</script>

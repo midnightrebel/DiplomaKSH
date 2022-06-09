@@ -6,7 +6,7 @@ import LoadFile from "./components/LoadFile";
 import CardsPage from "./components/CardsPage";
 import ContesterPage from "./components/ContesterPage";
 export default createRouter({
-  history: createWebHashHistory(),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes: [
     {
       path: "/:catchAll(.*)",
