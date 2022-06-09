@@ -1,9 +1,10 @@
 import App from "./App.vue";
 import router from "./router";
 import { createApp } from "vue";
+import store from "./store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import axios from "axios";
 const app = createApp(App);
-app.use(router, axios);
+app.use(store).use(router, axios);
 app.mount("#app");

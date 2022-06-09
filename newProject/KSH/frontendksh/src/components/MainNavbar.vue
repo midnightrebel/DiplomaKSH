@@ -94,20 +94,31 @@
 
 <script>
 import axios from "axios";
+
 export default {
   name: "MainNavbar",
+  beforeCreate() {
+    this.$store.commit("initializeStore");
+    const access = this.$store.state.access;
+
+    if (access) {
+      axios.defaults.headers.common["Authorization"] = "JWT " + access;
+    } else {
+      axios.defaults.headers.common["Authorization"] = "";
+    }
+  },
   data() {
     return {
       user: "",
     };
   },
   mounted() {
-    this.getLatestProducts();
+    this.getuser();
   },
   methods: {
-    async getLatestProducts() {
+    async getuser() {
       await axios
-        .get("/api/users/users/1/")
+        .get(`/api/users/1/`)
         .then((response) => {
           this.user = response.data;
           console.log(this.user);

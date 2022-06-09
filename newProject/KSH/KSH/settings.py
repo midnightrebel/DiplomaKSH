@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'dj_rest_auth',
+    'djoser',
     'corsheaders',
     'users',
     'webpack_loader',
@@ -60,7 +62,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'KSH.urls'
-
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -112,7 +116,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

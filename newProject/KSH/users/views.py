@@ -1,3 +1,4 @@
+from users.permissions import IsOwnerOrReadOnly
 from rest_framework import status, generics
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.exceptions import AuthenticationFailed
@@ -7,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 import jwt
 from .serializers import AccountPropertiesSerializer, LoginSerializer
-from .serializers import RegistrationSerializer, ChangePasswordSerializer, UserSerializer
+from .serializers import RegistrationSerializer, ChangePasswordSerializer, UserSerializer, LogoutSerializer
 from .models import User
 
 
@@ -66,19 +67,24 @@ def validate_username(username):
 
 
 class LogoutView(APIView):
-    def post(self, request):
-        responsce = Response()
-        responsce.delete_cookie('jwt')
-        responsce.data = {
-            'message': 'success'
-        }
-        return responsce
+    serializer_class = LogoutSerializer
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 # Account properties
 # Response: https://gist.github.com/mitchtabian/4adaaaabc767df73c5001a44b4828ca5
 # Url: https://<your-domain>/api/account/
 # Headers: Authorization: Token <token>
 
+
+class CurrentUserView(APIView):
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
 
 @api_view(['GET', ])
 @permission_classes((IsAuthenticated,))
@@ -128,7 +134,6 @@ class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-
 class LoginAPIView(generics.GenericAPIView):
     serializer_class = LoginSerializer
 
@@ -143,7 +148,7 @@ class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     serializer_class = UserSerializer
 
     def get(self, request, *args, **kwargs):
-        token = request.COOKIES.get('jwt')
+        token = request.data.get('access')
         # serializer to handle turning our `User` object into something that
         # can be JSONified and sent to the client.
         if not token:

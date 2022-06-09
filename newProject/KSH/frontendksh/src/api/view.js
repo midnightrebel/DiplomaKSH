@@ -5,11 +5,16 @@ export const Note = {
       return response.data;
     });
   },
-  delete(view) {
-    return HTTP.delete(`/view/${view.id}/`);
+  delete(student) {
+    return HTTP.delete(`/view/${student.id}/`);
   },
   list() {
     return HTTP.get("/view/").then((response) => {
+      return response.data;
+    });
+  },
+  retrieve(student) {
+    return HTTP.get(`/user/${student.id}/`).then((response) => {
       return response.data;
     });
   },

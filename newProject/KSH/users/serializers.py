@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
 from .models import User
-
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class RegistrationSerializer(serializers.ModelSerializer):
     """ Сериализация регистрации пользователя и создания нового. """
@@ -96,7 +96,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'password','full_name')
+        fields = ('pk','email', 'username', 'password','full_name')
 
         # Параметр read_only_fields является альтернативой явному указанию поля
         # с помощью read_only = True, как мы это делали для пароля выше.
@@ -130,3 +130,19 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+
+
+    def validate(self, attr):
+        self.token = attr['refresh']
+        return attr
+
+
+    def save(self,**kwargs):
+        try:
+            RefreshToken(self.token).blacklist()
+        except TokenError:
+            self.fail('bad token')

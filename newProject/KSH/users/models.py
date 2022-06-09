@@ -1,5 +1,7 @@
 from django.db import models
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.urls import reverse
+
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
@@ -89,11 +91,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f'{self.username}'
 
+    def get_absolute_url(self):  # название по соглашению
+        # аналог функции url в шаблоне
+        return reverse('view_user', kwargs={"user_id": self.pk})
+
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
         ordering = ['username']
-
     @property
     def token(self):
         """
