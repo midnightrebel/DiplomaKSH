@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="text-center mt-4 name">Вход в учётную запись</div>
+    <div class="text-center mt-4 name">Регистрация</div>
     <form @submit.prevent="submitForm" class="p-3 mt-3">
       <div class="form-field d-flex align-items-center">
         <span class="far fa-user"></span>
@@ -8,11 +8,11 @@
           type="email"
           name="email"
           placeholder="name@example.com"
-          v-model="email"
+          v-model="username"
         />
       </div>
       <div class="form-field d-flex align-items-center">
-        <span class="fas fa-key"></span>
+        <span class="fas fa-key">Пароль</span>
         <input
           type="password"
           name="password"
@@ -20,12 +20,13 @@
           placeholder="Password"
         />
       </div>
+      <div>
+        <text class="danger" name="errors"
+          >Пароль должен быть не менее 8 символов</text
+        >
+      </div>
       <button class="btn mt-3" type="submit">Вход</button>
     </form>
-    <div class="text-center fs-6">
-      <a href="#">Забыли пароль?</a> <br />
-      <a @onClick="Login" href="#">Войти</a>
-    </div>
   </div>
 </template>
 
@@ -33,34 +34,30 @@
 import axios from "axios";
 
 export default {
-  name: "AutorizePage",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Register",
   data() {
     return {
       email: "",
+      username: "",
       password: "",
+      errors: "",
     };
   },
   methods: {
-    // eslint-disable-next-line no-unused-vars
     submitForm() {
       axios.defaults.headers.common["Authorization"] = "";
       localStorage.removeItem("access");
       const formData = {
-        email: this.email,
+        email: this.username,
+        username: this.username,
         password: this.password,
       };
       axios
-        .post("/api/v1/jwt/create/", formData)
+        .post("/api/v1/users/", formData)
         .then((response) => {
-          const access = response.data.access;
-          const refresh = response.data.refresh;
-          this.$store.commit("setAccess", access);
-          this.$store.commit("setRefresh", refresh);
-          axios.defaults.headers.common["Authorization"] = "JWT " + access;
-          localStorage.setItem("access", access);
-          localStorage.setItem("refresh", refresh);
-          this.$router.push("/home");
           console.log(response);
+          this.$router.push("/");
         })
         .catch((error) => {
           console.log(error);

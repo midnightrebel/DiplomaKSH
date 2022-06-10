@@ -22,6 +22,8 @@ urlpatterns = [
     path('', include('mainapp.urls')),
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
+    path('api/v1/', include('djoser.urls')),
+    path('api/v1/', include('djoser.urls.jwt'))
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

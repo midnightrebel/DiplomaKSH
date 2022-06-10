@@ -6,6 +6,7 @@ from rest_framework.generics import UpdateAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
 import jwt
 from .serializers import AccountPropertiesSerializer, LoginSerializer
 from .serializers import RegistrationSerializer, ChangePasswordSerializer, UserSerializer, LogoutSerializer
@@ -67,14 +68,17 @@ def validate_username(username):
 
 
 class LogoutView(APIView):
-    serializer_class = LogoutSerializer
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        try:
+            refresh_token = request.data["refresh_token"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 # Account properties
 # Response: https://gist.github.com/mitchtabian/4adaaaabc767df73c5001a44b4828ca5
 # Url: https://<your-domain>/api/account/

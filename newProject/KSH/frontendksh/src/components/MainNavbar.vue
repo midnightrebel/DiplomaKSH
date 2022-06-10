@@ -51,18 +51,6 @@
               </li>
             </ul>
           </li>
-          <td>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-                v-bind:user="user"
-                >Добро пожаловать,{{ user.full_name }}</a
-              >
-            </li>
-          </td>
         </ul>
         <!-- <form class="d-flex">
             <input
@@ -79,11 +67,7 @@
         >
           Войти
         </a>
-        <a
-          class="btn btn-outline-success"
-          type="submit"
-          href="/api/users/register"
-        >
+        <a class="btn btn-outline-success" type="submit" href="#/register">
           Зарегистрироваться
         </a>
         <!-- </form> -->
@@ -91,42 +75,3 @@
     </div>
   </nav>
 </template>
-
-<script>
-import axios from "axios";
-
-export default {
-  name: "MainNavbar",
-  beforeCreate() {
-    this.$store.commit("initializeStore");
-    const access = this.$store.state.access;
-
-    if (access) {
-      axios.defaults.headers.common["Authorization"] = "JWT " + access;
-    } else {
-      axios.defaults.headers.common["Authorization"] = "";
-    }
-  },
-  data() {
-    return {
-      user: "",
-    };
-  },
-  mounted() {
-    this.getuser();
-  },
-  methods: {
-    async getuser() {
-      await axios
-        .get(`/api/users/1/`)
-        .then((response) => {
-          this.user = response.data;
-          console.log(this.user);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
-};
-</script>

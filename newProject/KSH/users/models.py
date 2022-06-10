@@ -47,7 +47,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # интерфейсе. Мы так же проиндексируем этот столбец в базе данных для
     # повышения скорости поиска в дальнейшем.
     username = models.CharField(db_index=True, max_length=255, unique=True)
-    full_name = models.CharField(max_length=255,unique=True,default="")
+    full_name = models.CharField(max_length=255,default="")
     slug = models.SlugField(max_length=50, verbose_name='URL-Адрес')
     # Так же мы нуждаемся в поле, с помощью которого будем иметь возможность
     # связаться с пользователем и идентифицировать его при входе в систему.

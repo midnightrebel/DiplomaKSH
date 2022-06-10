@@ -15,7 +15,7 @@
       <div class="container">
         <div class="text-center my-5">
           <h1 class="fw-bolder">Добро пожаловать!</h1>
-          <p class="lead mb-0">Ресурс посвящён генерации групп в КШ ФИСТ.</p>
+          <span :src="user_data">{{ user_data }}</span>
         </div>
       </div>
     </header>
@@ -175,19 +175,3 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  name: " HomePage",
-  props: {
-    notes: {
-      type: Array,
-      required: true,
-    },
-  },
-  computed: {
-    publishedPosts() {
-      return this.posts.filter((note) => note.title);
-    },
-  },
-};
-</script>

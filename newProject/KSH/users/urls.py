@@ -12,5 +12,6 @@ urlpatterns = [
     path('user/', UserRetrieveUpdateAPIView.as_view(), name='user'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('list/', UserList.as_view()),
-    path('<int:pk>',  UserDetail.as_view(), name='view_user'),
+    path('<int:pk>/',  UserDetail.as_view(), name='view_user'),
+    path('me/',CurrentUserView.as_view(), name='me')
 ]

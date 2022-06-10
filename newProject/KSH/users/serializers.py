@@ -72,7 +72,7 @@ class LoginSerializer(serializers.ModelSerializer):
         return {
             'email': user.email,
             'username': user.username,
-            'tokens': user.token
+            'token': user.token
         }
 
 
@@ -96,7 +96,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('pk','email', 'username', 'password','full_name')
+        fields = ('pk','email', 'username', 'password','full_name','token')
 
         # Параметр read_only_fields является альтернативой явному указанию поля
         # с помощью read_only = True, как мы это делали для пароля выше.
