@@ -1,35 +1,38 @@
 <template>
-  <div class="wrapper">
-    <div class="text-center mt-4 name">Регистрация</div>
-    <form @submit.prevent="submitForm" class="p-3 mt-3">
-      <div class="form-field d-flex align-items-center">
-        <span class="far fa-user"></span>
+  <div>
+    <h4>Register</h4>
+    <form @submit.prevent="register">
+      <label for="name">Name</label>
+      <div>
+        <input id="name" type="text" v-model="name" required autofocus />
+      </div>
+      <label for="email">E-Mail Address</label>
+      <div>
+        <input id="email" type="email" v-model="email" required />
+      </div>
+      <label for="password">Password</label>
+      <div>
+        <input id="password" type="password" v-model="password" required />
+      </div>
+      <label for="password-confirm">Confirm Password</label>
+      <div>
         <input
-          type="email"
-          name="email"
-          placeholder="name@example.com"
-          v-model="username"
+          id="password-confirm"
+          type="password"
+          v-model="password_confirmation"
+          required
         />
       </div>
-      <div class="form-field d-flex align-items-center">
-        <span class="fas fa-key">Пароль</span>
-        <input
-          type="password"
-          name="password"
-          v-model="password"
-          placeholder="Password"
-        />
+      <label for="password-confirm">Phone</label>
+      <div>
+        <input id="password-confirm" type="tel" v-model="phone" required />
       </div>
       <div>
-        <text class="danger" name="errors"
-          >Пароль должен быть не менее 8 символов</text
-        >
+        <button type="submit">Register</button>
       </div>
-      <button class="btn mt-3" type="submit">Вход</button>
     </form>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 
@@ -38,10 +41,12 @@ export default {
   name: "Register",
   data() {
     return {
+      name: "",
       email: "",
-      username: "",
       password: "",
-      errors: "",
+      password_confirmation: "",
+      phone: "",
+      is_admin: null,
     };
   },
   methods: {
@@ -52,6 +57,7 @@ export default {
         email: this.username,
         username: this.username,
         password: this.password,
+        password2: this.password2,
       };
       axios
         .post("/api/v1/users/", formData)

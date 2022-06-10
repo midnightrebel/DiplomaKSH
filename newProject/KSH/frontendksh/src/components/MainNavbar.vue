@@ -75,3 +75,16 @@
     </div>
   </nav>
 </template>
+<script>
+import { mapState } from "vuex";
+export default {
+  name: "MainNavbar",
+  computed: mapState(["accessToken"]),
+};
+</script>
+
+<style scoped>
+a {
+  color: #000;
+}
+</style>

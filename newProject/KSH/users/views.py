@@ -7,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-import jwt
 from .serializers import AccountPropertiesSerializer, LoginSerializer
 from .serializers import RegistrationSerializer, ChangePasswordSerializer, UserSerializer, LogoutSerializer
 from .models import User
@@ -72,17 +71,12 @@ class LogoutView(APIView):
 
     def post(self, request):
         try:
-            refresh_token = request.data["refresh_token"]
-            token = RefreshToken(refresh_token)
+            token = RefreshToken(request.data.get('refresh'))
             token.blacklist()
 
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-# Account properties
-# Response: https://gist.github.com/mitchtabian/4adaaaabc767df73c5001a44b4828ca5
-# Url: https://<your-domain>/api/account/
-# Headers: Authorization: Token <token>
 
 
 class CurrentUserView(APIView):
@@ -148,23 +142,7 @@ class LoginAPIView(generics.GenericAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
-    serializer_class = UserSerializer
 
-    def get(self, request, *args, **kwargs):
-        token = request.data.get('access')
-        # serializer to handle turning our `User` object into something that
-        # can be JSONified and sent to the client.
-        if not token:
-            raise AuthenticationFailed('Пользователь не авторизирован')
-        try:
-            payload = jwt.decode(token, 'secret', algorithm=['HS256'])
-        except jwt.ExpiredSignatureError:
-            raise AuthenticationFailed('Пользователь не авторизирован')
-
-        user = User.objects.filter(id=payload['pk']).first()
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
 
 
 @api_view(['GET', ])

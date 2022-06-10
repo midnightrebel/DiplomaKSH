@@ -22,6 +22,12 @@ export default createStore({
       state.refresh = refresh;
     },
   },
-  actions: {},
+  actions: {
+    userLogout(context) {
+      if (context.getters.loggedIn) {
+        context.commit("destroyToken");
+      }
+    },
+  },
   modules: {},
 });

@@ -18,7 +18,6 @@ export default createRouter({
     { path: "/", component: HomePage },
     { path: "/home", component: AutorizedHomePage },
     { path: "/signin", component: AutorizePage },
-    { path: "/signin", component: AutorizePage },
     { path: "/generate/excel", component: LoadFile },
     { path: "/generate/contester", component: ContesterPage },
     { path: "/groups", component: CardsPage },
