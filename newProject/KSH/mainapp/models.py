@@ -25,14 +25,6 @@ AUD_CHOICES = (
     ('423', '423'),
 )
 
-# def ParsingContester(self):
-#     if Note.url != None:
-#         responce = requests.get(Note.url)
-#         soup = BeautifulSoup(responce.text,'lxml')
-#         quotes = soup.find_all('option')
-#         for quote in quotes:
-#             if(quote.text.__contains__("КШ")):
-#                 print(quote.text[9:])
 
 
 
@@ -58,7 +50,9 @@ class Groups(models.Model):
         return self.nameGroup
 
 class Students(models.Model):
-    fio = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
+    second_name = models.CharField(max_length=255)
+    third_name = models.CharField(max_length=255)
     group = models.ForeignKey(Groups,on_delete=models.CASCADE)
     class_student = models.IntegerField()
     school = models.CharField(max_length=255)
@@ -66,7 +60,9 @@ class Students(models.Model):
     days = models.CharField(max_length=1, choices=DAYS_OF_WEEK, default='0')
     email = models.EmailField()
     phone_number = models.CharField(max_length=255)
-
+    rating = models.IntegerField()
+    done_tasks = models.IntegerField(default=0)
+    grant_place = models.BooleanField(default=False)
     def __str__(self):
         return self.fio
 
