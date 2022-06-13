@@ -45,10 +45,6 @@
                   >Contester</a
                 >
               </li>
-              <li><a class="dropdown-item" href="#">Гугл-форма</a></li>
-              <li>
-                <a class="dropdown-item" href="#/generate/excel">Excel</a>
-              </li>
             </ul>
           </li>
         </ul>

@@ -9,10 +9,11 @@ from django.views.generic import TemplateView
 
 
 
-
 class Index(TemplateView):
     template_name = "index.html"
-
+    url = str(input("Ссылка на турнирную таблицу:"))
+    if url.__contains__('contestscoreboard'):
+        url = url.replace('contestscoreboard', 'contestscoreboardgrid')
 
 class FrontendTemplateView(View):
     def post(self, request):

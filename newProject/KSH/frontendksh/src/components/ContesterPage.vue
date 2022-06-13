@@ -6,20 +6,25 @@
     <input
       type="email"
       class="col-sm-2 col-form-label"
-      id="exampleFormControlInput1"
-      placeholder="http://vtcloud9.ulstu.ru/ru/userlist-sh-1?us=51"
+      placeholder="http://ulivt.ru:8080/ru/contestscoreboard-cid-139c?p=0"
     />
+    <button class="btn btn-primary" type="submit">Получить данные</button>
   </div>
 </template>
 
 <style scoped>
+button {
+  margin: 0 auto;
+  margin-top: 50px;
+  display: block;
+}
 input {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  text-align: center;
+  margin-top: auto;
 }
 h1 {
   padding-bottom: 20px;

@@ -16,7 +16,7 @@ class GroupCreateSerialzer(serializers.ModelSerializer):
 
 class StudentsCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ['fio']
+        exclude = ['pk']
 
 class StudentsCreateSerializer(serializers.ModelSerializer):
     def create(self,validated_data):

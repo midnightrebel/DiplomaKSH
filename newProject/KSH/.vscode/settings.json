@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./mainapp/parsers",
+        "./mainapp"
+    ]
+}

@@ -6,17 +6,9 @@ import requests
 from django.shortcuts import render
 
 
-
 # Create your models here.
 from django.db import models
-DAYS_OF_WEEK = (
-    (0, 'Понедельник'),
-    (1, 'Вторник'),
-    (2, 'Среда'),
-    (3, 'Четверг'),
-    (4, 'Пятница'),
-    (5, 'Суббота'),
-)
+
 AUD_CHOICES = (
     ('306', '306'),
     ('307', '307'),
@@ -39,7 +31,7 @@ class Teachers(models.Model):
 class Groups(models.Model):
     teacher = models.ForeignKey(Teachers,on_delete=models.CASCADE)
     nameGroup = models.CharField(max_length=255)
-    day = models.CharField(choices=DAYS_OF_WEEK, null=True, max_length=255)
+    day = models.CharField(null=True, max_length=255)
     max_count = models.IntegerField()
     fact_count = models.IntegerField()
     aud = models.CharField(max_length=255,choices=AUD_CHOICES,null=True)
@@ -57,14 +49,14 @@ class Students(models.Model):
     class_student = models.IntegerField()
     school = models.CharField(max_length=255)
     subject = models.CharField(max_length=255, default='')
-    days = models.CharField(max_length=1, choices=DAYS_OF_WEEK, default='0')
+    days = models.CharField(max_length=255,  default='')
     email = models.EmailField()
     phone_number = models.CharField(max_length=255)
-    rating = models.IntegerField()
+    rating = models.IntegerField(default=0)
     done_tasks = models.IntegerField(default=0)
     grant_place = models.BooleanField(default=False)
     def __str__(self):
-        return self.fio
+        return self.first_name
 
 
 

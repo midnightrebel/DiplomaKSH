@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'users',
     'webpack_loader',
     'mainapp.apps.MainappConfig',
+    'import_export',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -86,7 +87,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'KSH.wsgi.application'
+
 
 
 # Database

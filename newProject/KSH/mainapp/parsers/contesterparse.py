@@ -1,16 +1,19 @@
+import datetime
+from itertools import groupby
+
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from itertools import groupby
-import datetime
-import csv
 from openpyxl import Workbook
-import pandas as pd
+from openpyxl.styles import PatternFill
+
 from googleforms import googleforms
+
 now = datetime.datetime.now()
 url = str(input("Ссылка на турнирную таблицу:"))
+grant_places = int(input("Количество грантовых мест: "))
 if url.__contains__('contestscoreboard'):
     url = url.replace('contestscoreboard', 'contestscoreboardgrid')
-
 page = requests.get(url)
 students_list = list()
 new_students_list = list()
@@ -36,11 +39,12 @@ index = 1
 for index in range(len(final_done_tasks)):
     rating.append(str(index + 1))
 workbook = Workbook()
+group = Workbook()
 worksheet = workbook.active
 worksheet["A1"] = "Фамилия"
 worksheet["B1"] = "Рейтинг"
 worksheet["C1"] = "Количество выполненных задач"
-second_name=[]
+second_name = []
 row_stud = 2
 for student in new_students_list:
     worksheet[row_stud][0].value = student[9:-3]
@@ -55,7 +59,7 @@ for item_task in final_done_tasks:
     worksheet[row_count][2].value = item_task
     row_count += 1
 workbook.save(filename=namefile)
-df = pd.read_excel(namefile,sheet_name='Sheet',usecols=[0,1,2])
+df = pd.read_excel(namefile, sheet_name='Sheet', usecols=[0, 1, 2])
 second_name_from_form = ""
 row = 0
 names = []
@@ -63,9 +67,43 @@ for item in googleforms.iterrows():
     item = googleforms.iloc[row]['Фамилия']
     names.append(item)
     row += 1
-final_data = pd.merge(googleforms, df, on='Фамилия', how='left')
+row_subject = 0
+subjects = set()
+row_days = 0
+for item in googleforms.iterrows():
+    item = googleforms.iloc[row_subject]['В какую группу вы хотите?']
+    subject_list = item.split(',')
+    for subject in subject_list:
+        subject = subject.strip()
+        subjects.add(subject)
+    row_subject += 1
+final_data = pd.merge(googleforms, df, on='Фамилия', how='left').sort_values(by=['Рейтинг'], ascending=True)
 for name in second_name:
     for item in names:
-        if(name.__contains__(item)):
-            final_data.to_excel('final_result.xlsx')
+        if name.__contains__(item):
+            final_data.to_excel('final_result.xlsx', index=False)
+writer = pd.ExcelWriter("groups.xlsx", engine='openpyxl')
+final_row = 0
+final_set = set()
+for item in final_data.iterrows():
+    item = final_data.iloc[final_row]['В какую группу вы хотите?']
+    if item.__contains__(','):
+        subject_list = item.split(',')
+        for subject in subject_list:
+            item = subject.strip()
+            final_set.add(item)
+    else:
+        final_set.add(item)
+    final_row += 1
+for subject in final_set:
+    for subject, group_df in final_data.groupby('В какую группу вы хотите?'):
+        group_df.to_excel(writer, sheet_name=subject, index=False)
+workbook = writer.book
+for sheet in workbook.sheetnames:
+    worksheet = writer.sheets[sheet]
+    for rows in worksheet.iter_rows(min_row=2, max_row=worksheet.max_row):
+        for cell in rows:
+            if cell.row <= grant_places + 1:
+                cell.fill = PatternFill(start_color="60FF60", fill_type='solid')
 
+writer.save()
